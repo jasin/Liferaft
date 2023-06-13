@@ -1,0 +1,103 @@
+<UserControl
+  x:Class="LifeRaft_AUI.Pages.HomePage"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="using:LifeRaft_AUI.ViewModels"
+  xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Runtime"
+  x:DataType="vm:HomePageViewModel"
+  d:DesignHeight="600"
+  d:DesignWidth="1200"
+  mc:Ignorable="d">
+  
+  <Design.DataContext>
+    <vm:HomePageViewModel/>
+  </Design.DataContext>
+  
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/Application.axaml" />
+  </UserControl.Styles>
+  
+  <Border Margin="10">
+    <Grid ColumnDefinitions="*, 2*" RowDefinitions="Auto, Auto, *">
+      
+      <!-- Company Information -->
+      <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackPanel>
+          <TextBlock Text="AFT Mechanical, LLC" Classes="h1" />
+          <TextBlock Text="120 Ferris Street, Elmira, NY 14904"></TextBlock>
+        </StackPanel>
+      </StackPanel>
+      
+      <!-- Ledger Accounts Module -->
+      <Grid Grid.Column="0" Grid.Row="1">
+        <StackPanel>
+          <TextBlock Text="Accounts" Classes="h2"/>
+          <ItemsRepeater ItemsSource="{CompiledBinding Accounts}">
+            <ItemsRepeater.ItemTemplate>
+              <DataTemplate>
+                <DataTemplate.DataType>
+                  <x:Type TypeName="generic:KeyValuePair" x:TypeArguments="x:String, x:Decimal"/>
+                </DataTemplate.DataType>
+                <Grid ColumnDefinitions="*, Auto">
+                  <TextBlock Grid.Column="0" Text="{CompiledBinding Key}"/>
+                  <TextBlock Grid.Column="1" Text="{CompiledBinding Value, StringFormat={}{0:C2}}"/>
+                </Grid>
+              </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+          </ItemsRepeater>
+        </StackPanel>
+      </Grid>
+      
+      <!-- Aging Invoice Module -->
+      <ScrollViewer Grid.Column="1" Grid.Row="1" HorizontalScrollBarVisibility="Visible" AllowAutoHide="True">
+        <StackPanel Classes="LeftMargin BottomMargin">
+          
+          <!-- Aging Payables -->
+          <TextBlock Text="Payables Aging" Classes="h2" />
+          <ItemsRepeater ItemsSource="{CompiledBinding AccountsPayableAging}">
+              <ItemsRepeater.Layout>
+                <StackLayout Spacing="40" Orientation="Horizontal"></StackLayout>
+              </ItemsRepeater.Layout>
+              <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                  <DataTemplate.DataType>
+                    <x:Type TypeName="generic:KeyValuePair" x:TypeArguments="x:String, x:Decimal"/>
+                  </DataTemplate.DataType>
+                  <StackPanel>
+                    <TextBlock Text="{CompiledBinding Key}"/>
+                    <TextBlock Text="{CompiledBinding Value, StringFormat={}{0:C2}}"/>
+                  </StackPanel>
+                </DataTemplate>
+              </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+          
+          
+          <!-- Aging Receivables -->
+          <TextBlock Text="Receivables Aging" Classes="h2"/>
+          <ItemsRepeater ItemsSource="{CompiledBinding AccountsReceivableAging}">
+            <ItemsRepeater.Layout>
+              <StackLayout Spacing="40" Orientation="Horizontal"></StackLayout>
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+              <DataTemplate>
+                <DataTemplate.DataType>
+                  <x:Type TypeName="generic:KeyValuePair" x:TypeArguments="x:String, x:Decimal"/>
+                </DataTemplate.DataType>
+                <StackPanel>
+                  <TextBlock Text="{CompiledBinding Key}"/>
+                  <TextBlock Text="{CompiledBinding Value, StringFormat={}{0:C2}}"/>
+                </StackPanel>
+              </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+          </ItemsRepeater>
+          
+        </StackPanel>
+      </ScrollViewer>
+
+    </Grid>
+  </Border>
+  
+  
+</UserControl>

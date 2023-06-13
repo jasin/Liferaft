@@ -1,0 +1,38 @@
+<UserControl
+  x:Class="LifeRaft_AUI.Views.MainView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:ui="using:FluentAvalonia.UI.Controls"
+  xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
+  xmlns:vm="using:LifeRaft_AUI.ViewModels"
+  x:DataType="vm:MainViewViewModel"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+
+  <!--  Navigation w/ Frame  -->
+  <ui:NavigationView x:Name="NavView" PaneDisplayMode="LeftCompact" SelectedItem="{CompiledBinding SelectedNavItem}">
+    <ui:NavigationView.MenuItems>
+
+      <!--  Home Nav  -->
+      <ui:NavigationViewItem
+        Content="Home"
+        IconSource="Home"
+        Tag="HomePage"
+        IsSelected="True" />
+
+      <!--  Employee Nav  -->
+      <ui:NavigationViewItem
+        Content="Employees"
+        IconSource="People"
+        Tag="EmployeePage" />
+
+    </ui:NavigationView.MenuItems>
+
+    <!--  Content Root Frame  -->
+    <ui:Frame x:Name="RootFrame" />
+
+  </ui:NavigationView>
+</UserControl>

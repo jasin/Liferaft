@@ -1,0 +1,39 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+    
+    <!-- StackPanel Styles -->
+    <!-- Left Margin -->
+    <Style Selector="StackPanel.LeftMargin">
+        <Setter Property="Margin" Value="10,0,0,0"></Setter>
+    </Style>
+    
+    <!-- Bottom Margin -->
+    <Style Selector="StackPanel.BottomMargin">
+        <Setter Property="Margin" Value="0,0,0,10"></Setter>
+    </Style>
+    
+
+    <!-- TextBlock Styles -->
+    <!-- h1 -->
+    <Style Selector="TextBlock.h1">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    
+    <!-- h2 -->
+    <Style Selector="TextBlock.h2">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    
+    <!-- alert -->
+    <Style Selector="TextBlock.alert">
+        <Setter Property="Foreground" Value="{DynamicResource Alert}" />
+    </Style>
+    
+</Styles>

@@ -1,0 +1,32 @@
+<UserControl
+  x:Class="LifeRaft_AUI.Pages.EmployeePage"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="using:LifeRaft_AUI.ViewModels"
+  xmlns:models="using:DatabaseAccess.Entities"
+  x:DataType="vm:EmployeePageViewModel"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+  
+  
+  <Grid RowDefinitions="Auto,*">
+    <TextBlock Name="TextBox" Text="{CompiledBinding PageName}" />
+    <DataGrid Grid.Row="1" Name="DataGrid" ItemsSource="{CompiledBinding Employees, Mode=OneWay}" AutoGenerateColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="First Name" Binding="{CompiledBinding (models:Employee).Fstnme}"/>
+        <DataGridTextColumn Header="Last Name" Binding="{CompiledBinding (models:Employee).Lstnme}"/>
+        <DataGridTextColumn Header="Address" Binding="{CompiledBinding (models:Employee).Addrs1}"/>
+        <DataGridTextColumn Header="City" Binding="{CompiledBinding (models:Employee).Ctynme}"/>
+        <DataGridTextColumn Header="State" Binding="{CompiledBinding (models:Employee).State}"/>
+        <DataGridTextColumn Header="Phone Number" Binding="{CompiledBinding (models:Employee).Phnnum}"/>
+        <DataGridTextColumn Header="E-Mail" Binding="{CompiledBinding (models:Employee).EMail}"/>
+        <DataGridTextColumn Header="Birth Date" Binding="{CompiledBinding (models:Employee).Dtebth}"/>
+        <DataGridTextColumn Header="Hire Date" Binding="{CompiledBinding (models:Employee).Dtehre}"/>
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+  
+</UserControl>
